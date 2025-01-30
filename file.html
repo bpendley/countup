@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Anniversary Countdown
+  </title>
+  <link id = "favicon" rel="icon" type="image/x-icon" href="images/favicon.png">
+  <style>
+    /* Styled link (button-like) */
+    .image-link {
+      display: inline-block;
+      padding: 5px 5px;
+      background-color: #3d45d4;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-link:hover {
+      background-color: #ba4c4c; /* Darker tomato on hover */
+    }
+
+    .image-link:active {
+      background-color: #963e3e; /* Even darker on click */
+    }
+
+    .image-link:focus {
+      outline: none;
+      box-shadow: 0px 0px 5px rgba(255, 99, 71, 0.8); /* Focus ring */
+    }
+
+   body {
+      background: linear-gradient(180deg, #87ceeb, #ffffff); /* Sky blue fading to white */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 10vh; /* Slightly lower padding */
+      height: 100%;
+      color: #444;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Arial', sans-serif; /* More formal and modern font */
+      font-size: 2.5rem;
+      color: #333;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.0rem;
+      padding: 5px;
+      color: #333;
+    }
+
+    #demo {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #ff6347;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.8); /* Box around countdown */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: auto;
+      display: inline-block;
+    }
+
+    .text-boxes {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center the boxes horizontally */
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    .text-box {
+      background-color: #f2f2f2; /* Light gray background */
+      padding: 5px; /* Less padding */
+      margin: 5px 0;
+      width: 80%; /* Wider text boxes */
+      font-family: 'Times New Roman', serif;
+      font-size: 0.6rem; /* Even smaller font size */
+      color: rgb(110, 106, 106);
+      box-shadow: none; /* No shadow effect */
+      text-align: left;
+      border: 1px solid #e0e0e0; /* Light border to give structure */
+    }
+
+    /* Modal styles */
+    .modal {
+  display: none; /* Hidden by default */
+  position: fixed;  /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with more opacity */
+}
+
+.modal-content {
+  margin: auto;
+  position: relative;
+  width: 90%; /* 90% of the viewport width */
+  height: 90%; /* 90% of the viewport height */
+  max-width: 1200px;
+  max-height: 90vh;
+  top: 20px;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Keep the image aspect ratio */
+}
+
+.close {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.close:hover,
+.close:focus {
+  color: #ddd;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Navigation Arrows */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  padding: 16px;
+  font-size: 24px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Optional: You can style the caption here if you'd like */
+.modal-caption {
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+  </style>
+ </head>
+ <body>
+  <h1>
+   WE'VE BEEN MARRIED THIS LONG
+  </h1>
+  <p id="demo">
+  </p>
+  <div class="text-boxes" id="textBoxes">
+    <div class="text-box">
+      <p>
+        Love O' Love, It is December 2024 and we are getting ready to travel with my family to visit in Destin Florida over Christmas.  This marks the sixth
+        <b>(SIXTH!)</b> Chrstmas we have spent together.  That is so exciting to me.  Over the past couple weeks we took Sunny on a fun new hike near <del>Crater</del>
+        <ins>Carter</ins> lake, I was forced to travel back to Chapel Hill for a few days for meetings, and then we made a brisket.  The best part of all of these things
+        was having you as my wife as they happened.  I am so eternally excited to wake up everyday and be surrounded by your love.  This season of our life can 
+        be difficult with the uncertainity surrounding school and big life decisions we are making together but there is no place I would rather be than here with you.
+        We are currently living the life we always hoped we would we.  Surrounded by the beauty of the mountains with our puppy dog.  I love you so so much and when
+        I think of where we were five years ago it only makes me all the more excited to see where we will be five years from now.  Always and Forever, Ben
+      </p>
+      <p>
+        <a href="javascript:void(0);" class="image-link" data-image="images/early_december24/sunny_hike.jpeg">Sunny and Me</a>
+        <a href="javascript:void(0);" class="image-link" data-image="images/early_december24/hockey.jpg">They forced me to go to a hockey game</a>
+        <a href="javascript:void(0);" class="image-link" data-image="images/early_december24/brisket.jpeg">Brisket</a>
+        <a href="javascript:void(0);" class="image-link" data-image="images/early_december24/brisket_and_me.jpg">Brisket 2</a>
+      </p>
+      <b>
+       12/04/24 4:11 pm
+      </b>
+     </div>
+    <div class="text-box">
+      <p>
+        Hi Katie Love, I love you so much.  Last week was pretty crazy.  Last wednesday we woke up verrrry early to drive to the airport.  We got there
+        and nearly all the parking spots were taken so we had to park on the top level of the garage as snow was starting to come down hard.  We got through
+        security, made our way to our gate, and boarded our plane only to have to wait 3 hours on the tarmac, yuck.  Then we flew to RDU where Taylor picked
+        us up and drove us to Leland.  We spent some time there before coming home and seeing my parents, for the weekend.  Then you drove them to the airport
+        on Monday and we finally had some quiet time.  There is no body I would rather have by my side than you during the holidays.  You are the cutest, kindest,
+        funniest, and best wife I could ever ask for and I feel so lucky to have you.  Right now, you are cooking us dinner and soon we will watch a movie.  I
+        feel so blessed to have you in my life.  I love you always and forever, Bo.
+      </p>
+      <p>
+        <a href="javascript:void(0);" class="image-link" data-image="images/thanksgiving24/IMG_3951.jpeg">Dogs</a>
+        <a href="javascript:void(0);" class="image-link" data-image="images/thanksgiving24/IMG_2577.jpeg">Sunset from Airplane</a>
+        <a href="javascript:void(0);" class="image-link" data-image="images/thanksgiving24/IMG_5073.png">Sunny with Grandparents</a>
+      </p>
+      <b>
+       12/04/24 4:11 pm
+      </b>
+     </div>
+    <div class="text-box">
+      <p>
+        Hi Katie Love Bug dub,  SORRY!  It’s been a minute since I’ve updated this, but I am popping in to let you know how loved and cherished you are.
+        This past month has been full of some great outdoor adventures and quality time.  you are my best friend, and I feel so lucky to be able to do things
+        like get our Melanzanas together.  You are the light of my world, and I can’t wait to keep on keepin on.  Every day when I come wake you up around
+        6:45 I think about how amazing it is to have you as my wife.  You are the cutest, most amazingly awesome wife I could ever hope to ask for.  
+        Thanks for being the love of my life.  Love, Ben
+      </p>
+      <b>
+       11/20/24 9:41 am
+      </b>
+     </div>
+      <div class="text-box">
+        <p>
+          <b>Leadville, November 2024</b>
+        </p>
+        <p>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/dub_walking_away.JPG">Katie</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/jumping_katie.JPG">Jumping Katie</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/me_balancing.JPG">My Cool Pose</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/me_mountains.JPG">Ben</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/me_on_rock.JPG">Rock</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/mountains.JPG">mountains</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/walking_dub.JPG">Katie</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/you_copy_me.JPG">You Copy My Pose</a>
+          <a href="javascript:void(0);" class="image-link" data-image="images/leadville/mellies.PNG">Mellies</a>
+        </p>
+        <b>
+         11/20/24 9:31 am
+        </b>
+       </div>
+    <div class="text-box">
+      <p>
+        Katie, I feel so honored to have you as my wife.  You constantly make my days better and put a smile on my face.  You are almost always the best part of my day and you contribute so much to make 
+        me feel loved and valued.  You are the best wife I could possibly ask for and I love you completly and endlessy.  Sometimes things can be difficult and feel defeating but there is no one I would 
+        face those challenges than with you.  You are such a gift to my life and I feel incredibly lucky to have you as my partner and I am so excited to see what our future has in store for us.  We 
+        have come so far since we started dating 5 (FIVE!) years ago.  Who knew that we would be married with the cutest puppy living in Colorado.  Life was so hard and and the life we are living now 
+        felt so distant but we stuck with it and now we are here.  Imagine what life will be like in another 5 years.  You are the light of my life Katie and I can't wait to grow old with you and spend
+         my life with you.  I love you, Always and Forever, Ben
+      </p>
+      <b>
+       10/15/24 7:43 am
+      </b>
+     </div>
+    <div class="text-box">
+      <p>
+        Hi Love Bug, we are wrapping up our visit to Albuqurque and will be headed back to Loveland soon. I love you so much and I appreciate all the effort you put into going with the flow this weekend.
+        I had so much fun at all the Balloons related events we went to even if it meant we couldn't get quite as much sleep as hoped for.  You are the love of my life and it is so special to me to be
+        able to take trips like this with you.  I have so thankful to have you as my forever travel partner.  ❤️❤️❤️❤️❤️ -Ben
+      </p>
+      <p>
+        <a href="javascript:void(0);" class="image-link" data-image="images/IMG_5991.jpeg">Group Picture</a>
+        <a href="javascript:void(0);" class="image-link" data-image="images/IMG_6111.jpeg">Us</a>
+        <a href="javascript:void(0);" class="image-link" data-image="images/IMG_6191.jpeg">Katie and Rory</a>
+      </p>
+      <b>
+       10/07/24 1:31 pm
+      </b>
+     </div>
+    <div class="text-box">
+      <p>
+        Goooooood Morrrrrrnnning Katie Dub, Every day I love my morning routine.  I wake up at 5 and then immediately take Sunny out, bring her inside, then feed her.  After Sunny is taken care of
+        I make my yummy cortado.  It usually says 5:12 on the oven clock by then, but don't be tricked because its actually about 5:14 once I've finished making my coffee.  Next, I sit down and drink
+        my cortado while reading or watching tv.  More recently I've been choosing to either read the economist or a book I'm working on.  At about 6 I relocated upstairs to my desk.  I turn on my slack
+        and most of the time get started on my work (sometimes I keep reading).  Either way, the best part of the morning comes next, around 6:50am, when I come to the room to check on you and wake you up
+        if you're not awake yet.  You are the most beautiful person I have ever met and I am so lucky to have you waiting for me every morning in our room looking as cute as you.  You are my favorite part
+        of every day and I love you so so so so much.  -Ben
+      </p>
+      <b>
+       10/03/24 7:52 am
+      </b>
+     </div>
+    <div class="text-box">
+      <p>
+       Katie, today was a no good day.  I put in sick from work and just did not feel myself.  However, despite that I felt so lucky to have you as my wife.  I love you so much
+      and I'm so thankful to have you on my team.  Love, Ben</p>
+      <b>
+       10/01/24 6:22 pm
+      </b>
+     </div>
+    
+      <div class="text-box">
+    <p>Happy Birthday!! Happy Birthday!!</p>
+    <b>
+     09/24/24 1:30 pm
+    </b>
+           <p>
+      <a href="javascript:void(0);" class="image-link" data-image="images/birthday-note-2024.jpg">Birthday Note!</a>
+    </p>
+    
+   </div>
+   <div class="text-box">
+    <p>
+     Hi Love, right now you are observing OT at theraswim.  I'm so proud of you and the work you are putting in for this application.  Sunny and I have been sitting here reflecting on how important you
+      are to us and how we love you so very much.  I can't wait for you to get back to hear about how to went.  As always, I love you enormously, -Ben
+    </p>
+    <b>
+     09/18/24 10:15 am
+    </b>
+   </div>
+   <div class="text-box">
+    <p>
+     Hi Katie, Today we went to Redeemer Lutheran for the first time.  They had In n Out food trucks there although we didn't partake.  I think the experience there was a little bit better than
+      we were expecting but we are still hoping to find more people our age for community.  After church we can home, watched Lost, and made a pot roasts.  Its days like today where I am so grateful to have you as my wife.
+    Looking for churches, cooking dinner, or binging tv shows there is no one I would rather be with than you.  You light up my world and I can wait to grow old with you.  I love you, always and forever, Ben
+    </p>
+    <b>
+     09/14/24 10:43 am
+    </b>
+   </div>
+   <div class="text-box">
+    <p>
+     Love Bug, I just had the most incredible time running errands with you, despite feeling a little anxious at the store.  One of the many joys of being married to you is that I always have
+      someone to make mundane things fun.  Love, Ben
+    </p>
+    <b>
+     09/13/24 09:15 am
+    </b>
+   </div>
+   <div class="text-box">
+    <p>
+     Hi Katie, today is a day that I love you so so so much.  I constantly am thinking about how grateful and happy I am to have you in my life.  Katie love, you are the light of my life
+      and every day that I get to spend married to you is a blessing.  I thank God for you, that I get to have a wife like you to spend my life with.  I am so so so excited for our future together.  I love you, -bo
+    </p>
+    <b>
+     09/12/24 11:07 am
+    </b>
+   </div>
+   <div class="text-box">
+    <p>
+     DUB, I remind you now how absolutely amazing you are. The dedication and effort you are putting into everything you are doing is great to watch, and I
+      couldn’t be more proud of you. You face every challenge wit strength and determination, and it makes me love and admire you even more. I believe in you completely, and I’m so lucky to have you with me
+    </p>
+    <b>
+     09/04/24 10:37 am
+    </b>
+   </div>
+   <div class="text-box">
+    <p>
+     Hi Love Bug, I love you so eternally much.  I am forever grateful to have you as my wife and I think about you constantly.
+        You make all the hard work worth it and I feel like the luckiest man alive.
+    </p>
+    <b>
+     08/28/24 09:16 pm
+    </b>
+   </div>
+   <div class="text-box">
+    <p>
+     &lt;3
+    </p>
+    <b>
+     09/18/24 11:24 am
+    </b>
+   </div>
+  </div>
+
+<!-- Modal structure with navigation arrows -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <button class="prev">&lt;</button>
+      <img src="" alt="Image" id="modalImage"/>
+      <button class="next">&gt;</button>
+  </div>
+</div>
+
+
+  <script>
+
+
+    window.onload = function() {
+        document.getElementById('favicon').href = 'images/favicon.png';
+    };
+
+    // Reusable function to create image modals
+  // Reusable function to create image modals
+function createImageModal() {
+    // Get all elements with class "image-link"
+    var imageLinks = document.getElementsByClassName('image-link');
+
+    // Get the modal and image elements
+    var modal = document.getElementById("myModal");
+    var modalImage = document.getElementById("modalImage");
+    var closeModal = document.getElementsByClassName("close")[0];
+    var prevButton = document.querySelector('.prev');
+    var nextButton = document.querySelector('.next');
+
+    // Store the images in an array
+    var images = Array.from(imageLinks).map(link => link.getAttribute('data-image'));
+
+    var currentIndex = -1; // To track the currently displayed image
+
+    // Attach click event listeners to all image links
+    for (var i = 0; i < imageLinks.length; i++) {
+        imageLinks[i].onclick = function() {
+            var imageSrc = this.getAttribute('data-image'); // Get the image source from data attribute
+            modalImage.src = imageSrc;
+            currentIndex = images.indexOf(imageSrc); // Set the current image index
+            modal.style.display = "block";
+        }
+    }
+
+    // When the user clicks on the close button, close the modal
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks outside the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Handle previous button click
+    prevButton.onclick = function() {
+        if (currentIndex > 0) {
+            currentIndex--; // Decrease index
+            modalImage.src = images[currentIndex];
+        } else {
+            currentIndex = images.length - 1; // Loop back to last image
+            modalImage.src = images[currentIndex];
+        }
+    }
+
+    // Handle next button click
+    nextButton.onclick = function() {
+        if (currentIndex < images.length - 1) {
+            currentIndex++; // Increase index
+            modalImage.src = images[currentIndex];
+        } else {
+            currentIndex = 0; // Loop back to first image
+            modalImage.src = images[currentIndex];
+        }
+    }
+}
+
+// Initialize the modal functionality
+createImageModal();
+
+
+    var countDownDate = new Date("April 15, 2023 07:30:00").getTime();
+
+     function updateCountdown() {
+       var now = new Date().getTime();
+       var distance = now - countDownDate;
+
+       var years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+       var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+       document.getElementById("demo").innerHTML =
+         years + "y " +
+         days + "d " +
+         hours + "h " +
+         minutes + "m " +
+         seconds + "s";
+     }
+
+     setInterval(updateCountdown, 1000);
+
+     // Function to convert date from "MM/DD/YY HH:mm AM/PM" format
+     function parseCustomDate(dateStr) {
+       const [datePart, timePart, ampm] = dateStr.split(" ");
+       const [month, day, year] = datePart.split("/").map(Number);
+       let [hours, minutes] = timePart.split(":").map(Number);
+
+       // Convert to 24-hour time
+       if (ampm.toLowerCase() === "pm" && hours !== 12) {
+         hours += 12;
+       } else if (ampm.toLowerCase() === "am" && hours === 12) {
+         hours = 0;
+       }
+
+       return new Date(`20${year}`, month - 1, day, hours, minutes);
+     }
+
+     // Sorting logic
+     function sortDivs() {
+       // Get all text-box divs
+       const container = document.getElementById('textBoxes');
+       const boxes = Array.from(container.getElementsByClassName('text-box'));
+
+       // Parse the date and sort the divs
+       boxes.sort((a, b) => {
+         const dateA = parseCustomDate(a.querySelector('b').textContent.trim());
+         const dateB = parseCustomDate(b.querySelector('b').textContent.trim());
+         return dateB - dateA;
+       });
+
+       // Re-insert the divs in sorted order
+       boxes.forEach(box => container.appendChild(box));
+     }
+
+     // Sort the divs when the page loads
+     window.onload = sortDivs;
+  </script>
+ </body>
+</html>
