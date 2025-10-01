@@ -8,6 +8,16 @@
   </title>
   <link id = "favicon" rel="icon" type="image/x-icon" href="images/favicon.png">
   <style>
+    #triangleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Stay behind all other content */
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks go through it */
+}
+
     /* Styled link (button-like) */
     .image-link {
       display: inline-block;
@@ -35,7 +45,7 @@
     }
 
    body {
-      background: linear-gradient(180deg, #87ceeb, #ffffff); /* Sky blue fading to white */
+      background: linear-gradient(180deg, #87ceeb, #6b89b0); /* Sky blue fading to white */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       display: flex;
@@ -181,12 +191,41 @@
   </style>
  </head>
  <body>
+  <canvas id="triangleCanvas"></canvas>
   <h1>
    WE'VE BEEN MARRIED THIS LONG
   </h1>
   <p id="demo">
   </p>
   <div class="text-boxes" id="textBoxes">
+    <div class="text-box">
+      <p>
+        Hi Love Bug, I am so thrilled to be your husband.  Everyday that I get to spend with you is a blessing that I would not trade anything for.  You make the
+        mundane so fun and exciting.  I can't help but feel the most overwhelming feeling of love whenever I spend time with.  Thank you for being the light of my
+        life and don't ever forget just how much you mean to me.  Love, Bo.
+      </p>
+      <p>
+        <a href="javascript:void(0);" class="image-link" data-image="images/jan_feb_25/my_family.jpeg">My Family</a>
+      </p>
+      <b>
+       10/01/25 6:45 pm
+      </b>
+     </div>
+    <div class="text-box">
+      <p>
+        Hello beautiful.  I think you are simply the most amazing wife.  I am so thankful to have you in my life.  Right now you are making me a yummy coffee.  
+        Then what you don’t know is that I will suggest watching survivor.  You mean so so so much to me.  On hard days at work you make me feel so much better.  
+        Having you is like having someone built into my life on such a fundamental level that I can always rely on you to cheer me up just by you being you.  
+        You are the most amazing cute beautiful funny silly fun and passionate wife that a guy could ask for.  I send lots of love through the internet so that 
+        you may feel just an ounce of the love I feel from you.  ♥️♥️♥️
+      </p>
+      <p>
+        <a href="javascript:void(0);" class="image-link" data-image="images/jan_feb_25/my_family.jpeg">My Family</a>
+      </p>
+      <b>
+       07/22/25 8:16 pm
+      </b>
+     </div>
     <div class="text-box">
       <p>
         Hi Katie dub, I love you so much.  It is due time for me to post an update on the countup.  It has been a long time since the last post here, much too LONG.
@@ -608,6 +647,77 @@ createImageModal();
 
      // Sort the divs when the page loads
      window.onload = sortDivs;
+
+     // Floating heart animation
+const canvas = document.getElementById('triangleCanvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// Load heart image
+const heartImage = new Image();
+heartImage.src = 'images/favicon.png';
+
+class Heart {
+  constructor() {
+    this.reset();
+  }
+
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = 20 + Math.random() * 30;
+    this.speedX = -0.5 + Math.random();
+    this.speedY = -0.5 + Math.random();
+    this.rotation = Math.random() * Math.PI * 2;
+    this.rotationSpeed = (Math.random() - 0.5) * 0.01;
+    this.opacity = 0.5 + Math.random() * 0.5;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.rotation += this.rotationSpeed;
+
+    // Wrap around
+    if (this.x > canvas.width) this.x = 0;
+    if (this.x < 0) this.x = canvas.width;
+    if (this.y > canvas.height) this.y = 0;
+    if (this.y < 0) this.y = canvas.height;
+  }
+
+  draw() {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.globalAlpha = this.opacity;
+    ctx.drawImage(heartImage, -this.size / 2, -this.size / 2, this.size, this.size);
+    ctx.restore();
+    ctx.globalAlpha = 1.0; // Reset opacity
+  }
+}
+
+const hearts = Array.from({ length: 30 }, () => new Heart());
+
+function animateHearts() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (!heartImage.complete) {
+    requestAnimationFrame(animateHearts);
+    return;
+  }
+  for (const heart of hearts) {
+    heart.update();
+    heart.draw();
+  }
+  requestAnimationFrame(animateHearts);
+}
+animateHearts();
+
   </script>
  </body>
 </html>
