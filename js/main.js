@@ -140,6 +140,8 @@ function createImageModal() {
     const image = images[currentIndex];
     if (!image) return;
 
+    preloadNeighborImages();
+
     if (image.password && !unlockedImages.has(image.src)) {
       showPasswordPrompt(image);
       return;
@@ -162,6 +164,19 @@ function createImageModal() {
     passwordPrompt.error.textContent = '';
     passwordPrompt.container.style.display = 'flex';
     passwordPrompt.input.focus();
+  }
+
+  function preloadNeighborImages() {
+    const neighbors = [
+      images[(currentIndex + images.length - 1) % images.length],
+      images[(currentIndex + 1) % images.length],
+    ];
+
+    for (const image of neighbors) {
+      if (!image || image.password) continue;
+      const preload = new Image();
+      preload.src = image.src;
+    }
   }
 }
 

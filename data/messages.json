@@ -8,13 +8,15 @@
     "images": [
       {
         "label": "Hint for Hidden Note #7",
-        "src": "images/2026_07_31/hint7.jpeg",
+        "src": "images/optimized/2026_07_31/hint7.jpg",
         "password": "lovebug",
-        "passwordLabel": "Oops you need a password to see this hint! Find hidden note #4 for the password."
+        "passwordLabel": "Oops you need a password to see this hint! Find hidden note #4 for the password.",
+        "originalSrc": "images/2026_07_31/hint7.jpeg"
       },
       {
         "label": "Hint for Hidden Note #8",
-        "src": "images/2026_07_31/hint8.jpeg"
+        "src": "images/optimized/2026_07_31/hint8.jpg",
+        "originalSrc": "images/2026_07_31/hint8.jpeg"
       }
     ]
   },
@@ -114,35 +116,43 @@
     "images": [
       {
         "label": "🪓",
-        "src": "images/2026_03_24/axethrowing.jpg"
+        "src": "images/optimized/2026_03_24/axethrowing.jpg",
+        "originalSrc": "images/2026_03_24/axethrowing.jpg"
       },
       {
         "label": "CRUISE",
-        "src": "images/2026_03_24/cruise.jpg"
+        "src": "images/optimized/2026_03_24/cruise.jpg",
+        "originalSrc": "images/2026_03_24/cruise.jpg"
       },
       {
         "label": "Hiking in RMNP!",
-        "src": "images/2026_03_24/hiking.jpg"
+        "src": "images/optimized/2026_03_24/hiking.jpg",
+        "originalSrc": "images/2026_03_24/hiking.jpg"
       },
       {
         "label": "bunches",
-        "src": "images/2026_03_24/sunny.jpg"
+        "src": "images/optimized/2026_03_24/sunny.jpg",
+        "originalSrc": "images/2026_03_24/sunny.jpg"
       },
       {
         "label": "sweater one!",
-        "src": "images/2026_03_24/sweater1.jpg"
+        "src": "images/optimized/2026_03_24/sweater1.jpg",
+        "originalSrc": "images/2026_03_24/sweater1.jpg"
       },
       {
         "label": "sweater two!",
-        "src": "images/2026_03_24/sweater2.jpg"
+        "src": "images/optimized/2026_03_24/sweater2.jpg",
+        "originalSrc": "images/2026_03_24/sweater2.jpg"
       },
       {
         "label": "sweater three!",
-        "src": "images/2026_03_24/sweater3.PNG"
+        "src": "images/optimized/2026_03_24/sweater3.jpg",
+        "originalSrc": "images/2026_03_24/sweater3.PNG"
       },
       {
         "label": "turkey",
-        "src": "images/2026_03_24/turkey.jpg"
+        "src": "images/optimized/2026_03_24/turkey.jpg",
+        "originalSrc": "images/2026_03_24/turkey.jpg"
       }
     ]
   },
@@ -179,7 +189,8 @@
     "images": [
       {
         "label": "My Family",
-        "src": "images/jan_feb_25/my_family.jpeg"
+        "src": "images/optimized/jan_feb_25/my_family.jpg",
+        "originalSrc": "images/jan_feb_25/my_family.jpeg"
       }
     ]
   },
@@ -192,15 +203,18 @@
     "images": [
       {
         "label": "it snowed",
-        "src": "images/jan_feb_25/snow_breck.jpeg"
+        "src": "images/optimized/jan_feb_25/snow_breck.jpg",
+        "originalSrc": "images/jan_feb_25/snow_breck.jpeg"
       },
       {
         "label": "Skiing",
-        "src": "images/jan_feb_25/us_skiing.jpeg"
+        "src": "images/optimized/jan_feb_25/us_skiing.jpg",
+        "originalSrc": "images/jan_feb_25/us_skiing.jpeg"
       },
       {
         "label": "My Family",
-        "src": "images/jan_feb_25/sunny_ben_dad.jpeg"
+        "src": "images/optimized/jan_feb_25/sunny_ben_dad.jpg",
+        "originalSrc": "images/jan_feb_25/sunny_ben_dad.jpeg"
       }
     ]
   },
@@ -213,35 +227,43 @@
     "images": [
       {
         "label": "You",
-        "src": "images/jan_feb_25/katie_redrocks3.jpeg"
+        "src": "images/optimized/jan_feb_25/katie_redrocks3.jpg",
+        "originalSrc": "images/jan_feb_25/katie_redrocks3.jpeg"
       },
       {
         "label": "You",
-        "src": "images/jan_feb_25/katie_redrocks4.jpeg"
+        "src": "images/optimized/jan_feb_25/katie_redrocks4.jpg",
+        "originalSrc": "images/jan_feb_25/katie_redrocks4.jpeg"
       },
       {
         "label": "Garden of the Gods",
-        "src": "images/jan_feb_25/red_rocks.jpeg"
+        "src": "images/optimized/jan_feb_25/red_rocks.jpg",
+        "originalSrc": "images/jan_feb_25/red_rocks.jpeg"
       },
       {
         "label": "Sheep Mountain",
-        "src": "images/jan_feb_25/sheep_sunrise2.jpeg"
+        "src": "images/optimized/jan_feb_25/sheep_sunrise2.jpg",
+        "originalSrc": "images/jan_feb_25/sheep_sunrise2.jpeg"
       },
       {
         "label": "Sheep Mountain",
-        "src": "images/jan_feb_25/sheep_mountain_sunrise1.JPG"
+        "src": "images/optimized/jan_feb_25/sheep_mountain_sunrise1.jpg",
+        "originalSrc": "images/jan_feb_25/sheep_mountain_sunrise1.JPG"
       },
       {
         "label": "Me and Sunny at Eldrorado Canyon",
-        "src": "images/jan_feb_25/sunny_ben_eldorado.jpeg"
+        "src": "images/optimized/jan_feb_25/sunny_ben_eldorado.jpg",
+        "originalSrc": "images/jan_feb_25/sunny_ben_eldorado.jpeg"
       },
       {
         "label": "Garden of the Gods",
-        "src": "images/jan_feb_25/sunny_katie_redrocks.jpeg"
+        "src": "images/optimized/jan_feb_25/sunny_katie_redrocks.jpg",
+        "originalSrc": "images/jan_feb_25/sunny_katie_redrocks.jpeg"
       },
       {
         "label": "Garden of the Gods",
-        "src": "images/jan_feb_25/sunny_katie_redrocks2.jpeg"
+        "src": "images/optimized/jan_feb_25/sunny_katie_redrocks2.jpg",
+        "originalSrc": "images/jan_feb_25/sunny_katie_redrocks2.jpeg"
       }
     ]
   },
@@ -254,27 +276,33 @@
     "images": [
       {
         "label": "You are majestic",
-        "src": "images/jan_feb_25/katie_sunrise_destin.jpeg"
+        "src": "images/optimized/jan_feb_25/katie_sunrise_destin.jpg",
+        "originalSrc": "images/jan_feb_25/katie_sunrise_destin.jpeg"
       },
       {
         "label": "Mini Golf",
-        "src": "images/jan_feb_25/mini_golf_destin.jpeg"
+        "src": "images/optimized/jan_feb_25/mini_golf_destin.jpg",
+        "originalSrc": "images/jan_feb_25/mini_golf_destin.jpeg"
       },
       {
         "label": "Us",
-        "src": "images/jan_feb_25/katie_ben_sunrise.jpeg"
+        "src": "images/optimized/jan_feb_25/katie_ben_sunrise.jpg",
+        "originalSrc": "images/jan_feb_25/katie_ben_sunrise.jpeg"
       },
       {
         "label": "Sunrise",
-        "src": "images/jan_feb_25/sunrise_destin.jpeg"
+        "src": "images/optimized/jan_feb_25/sunrise_destin.jpg",
+        "originalSrc": "images/jan_feb_25/sunrise_destin.jpeg"
       },
       {
         "label": "Sunrise",
-        "src": "images/jan_feb_25/sunrise_destin2.jpeg"
+        "src": "images/optimized/jan_feb_25/sunrise_destin2.jpg",
+        "originalSrc": "images/jan_feb_25/sunrise_destin2.jpeg"
       },
       {
         "label": "Santa",
-        "src": "images/jan_feb_25/funny_santa.jpeg"
+        "src": "images/optimized/jan_feb_25/funny_santa.jpg",
+        "originalSrc": "images/jan_feb_25/funny_santa.jpeg"
       }
     ]
   },
@@ -287,11 +315,13 @@
     "images": [
       {
         "label": "Finished product",
-        "src": "images/jan_feb_25/2001.jpeg"
+        "src": "images/optimized/jan_feb_25/2001.jpg",
+        "originalSrc": "images/jan_feb_25/2001.jpeg"
       },
       {
         "label": "The look",
-        "src": "images/jan_feb_25/katie_2001.jpeg"
+        "src": "images/optimized/jan_feb_25/katie_2001.jpg",
+        "originalSrc": "images/jan_feb_25/katie_2001.jpeg"
       }
     ]
   },
@@ -304,19 +334,23 @@
     "images": [
       {
         "label": "Sunny and Me",
-        "src": "images/early_december24/sunny_hike.jpeg"
+        "src": "images/optimized/early_december24/sunny_hike.jpg",
+        "originalSrc": "images/early_december24/sunny_hike.jpeg"
       },
       {
         "label": "They forced me to go to a hockey game",
-        "src": "images/early_december24/hockey.jpg"
+        "src": "images/optimized/early_december24/hockey.jpg",
+        "originalSrc": "images/early_december24/hockey.jpg"
       },
       {
         "label": "Brisket",
-        "src": "images/early_december24/brisket.jpeg"
+        "src": "images/optimized/early_december24/brisket.jpg",
+        "originalSrc": "images/early_december24/brisket.jpeg"
       },
       {
         "label": "Brisket 2",
-        "src": "images/early_december24/brisket_and_me.jpg"
+        "src": "images/optimized/early_december24/brisket_and_me.jpg",
+        "originalSrc": "images/early_december24/brisket_and_me.jpg"
       }
     ]
   },
@@ -329,15 +363,18 @@
     "images": [
       {
         "label": "Dogs",
-        "src": "images/thanksgiving24/IMG_3951.jpeg"
+        "src": "images/optimized/thanksgiving24/IMG_3951.jpg",
+        "originalSrc": "images/thanksgiving24/IMG_3951.jpeg"
       },
       {
         "label": "Sunset from Airplane",
-        "src": "images/thanksgiving24/IMG_2577.jpeg"
+        "src": "images/optimized/thanksgiving24/IMG_2577.jpg",
+        "originalSrc": "images/thanksgiving24/IMG_2577.jpeg"
       },
       {
         "label": "Sunny with Grandparents",
-        "src": "images/thanksgiving24/IMG_5073.png"
+        "src": "images/optimized/thanksgiving24/IMG_5073.jpg",
+        "originalSrc": "images/thanksgiving24/IMG_5073.png"
       }
     ]
   },
@@ -358,39 +395,48 @@
     "images": [
       {
         "label": "Katie",
-        "src": "images/leadville/dub_walking_away.JPG"
+        "src": "images/optimized/leadville/dub_walking_away.jpg",
+        "originalSrc": "images/leadville/dub_walking_away.JPG"
       },
       {
         "label": "Jumping Katie",
-        "src": "images/leadville/jumping_katie.JPG"
+        "src": "images/optimized/leadville/jumping_katie.jpg",
+        "originalSrc": "images/leadville/jumping_katie.JPG"
       },
       {
         "label": "My Cool Pose",
-        "src": "images/leadville/me_balancing.JPG"
+        "src": "images/optimized/leadville/me_balancing.jpg",
+        "originalSrc": "images/leadville/me_balancing.JPG"
       },
       {
         "label": "Ben",
-        "src": "images/leadville/me_mountains.JPG"
+        "src": "images/optimized/leadville/me_mountains.jpg",
+        "originalSrc": "images/leadville/me_mountains.JPG"
       },
       {
         "label": "Rock",
-        "src": "images/leadville/me_on_rock.JPG"
+        "src": "images/optimized/leadville/me_on_rock.jpg",
+        "originalSrc": "images/leadville/me_on_rock.JPG"
       },
       {
         "label": "mountains",
-        "src": "images/leadville/mountains.JPG"
+        "src": "images/optimized/leadville/mountains.jpg",
+        "originalSrc": "images/leadville/mountains.JPG"
       },
       {
         "label": "Katie",
-        "src": "images/leadville/walking_dub.JPG"
+        "src": "images/optimized/leadville/walking_dub.jpg",
+        "originalSrc": "images/leadville/walking_dub.JPG"
       },
       {
         "label": "You Copy My Pose",
-        "src": "images/leadville/you_copy_me.JPG"
+        "src": "images/optimized/leadville/you_copy_me.jpg",
+        "originalSrc": "images/leadville/you_copy_me.JPG"
       },
       {
         "label": "Mellies",
-        "src": "images/leadville/mellies.PNG"
+        "src": "images/optimized/leadville/mellies.jpg",
+        "originalSrc": "images/leadville/mellies.PNG"
       }
     ]
   },
@@ -411,15 +457,18 @@
     "images": [
       {
         "label": "Group Picture",
-        "src": "images/IMG_5991.jpeg"
+        "src": "images/optimized/IMG_5991.jpg",
+        "originalSrc": "images/IMG_5991.jpeg"
       },
       {
         "label": "Us",
-        "src": "images/IMG_6111.jpeg"
+        "src": "images/optimized/IMG_6111.jpg",
+        "originalSrc": "images/IMG_6111.jpeg"
       },
       {
         "label": "Katie and Rory",
-        "src": "images/IMG_6191.jpeg"
+        "src": "images/optimized/IMG_6191.jpg",
+        "originalSrc": "images/IMG_6191.jpeg"
       }
     ]
   },
@@ -448,7 +497,8 @@
     "images": [
       {
         "label": "Birthday Note!",
-        "src": "images/birthday-note-2024.jpg"
+        "src": "images/optimized/birthday-note-2024.jpg",
+        "originalSrc": "images/birthday-note-2024.jpg"
       }
     ]
   },
