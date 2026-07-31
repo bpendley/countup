@@ -7,7 +7,60 @@ async function loadMessages() {
   }
 
   const messages = await response.json();
-  container.innerHTML = messages.map(message => message.html).join('\n');
+  container.replaceChildren(...messages.sort(compareMessages).map(createTextBox));
+}
+
+function compareMessages(a, b) {
+  const dateA = parseCustomDate(a.date);
+  const dateB = parseCustomDate(b.date);
+
+  if (dateA && dateB) {
+    return dateB - dateA || b.id - a.id;
+  }
+
+  if (dateA) return -1;
+  if (dateB) return 1;
+
+  return b.id - a.id;
+}
+
+function createTextBox(message) {
+  const box = document.createElement('div');
+  box.className = 'text-box';
+  const paragraphs = Array.isArray(message.message) ? message.message : [message.message];
+  const images = message.images || [];
+
+  for (const paragraph of paragraphs) {
+    const paragraphElement = document.createElement('p');
+    paragraphElement.textContent = paragraph;
+    box.appendChild(paragraphElement);
+  }
+
+  if (images.length > 0) {
+    const imageList = document.createElement('p');
+
+    for (const image of images) {
+      const link = document.createElement('a');
+      link.href = 'javascript:void(0);';
+      link.className = 'image-link';
+      link.dataset.image = image.src;
+      if (image.password && image.passwordLabel) {
+        link.dataset.password = image.password;
+        link.dataset.passwordLabel = image.passwordLabel;
+      }
+      link.textContent = image.label;
+      imageList.appendChild(link);
+      imageList.appendChild(document.createTextNode(' '));
+    }
+
+    box.appendChild(imageList);
+  }
+
+  const date = document.createElement('b');
+  date.textContent = message.date;
+  box.appendChild(date);
+
+  return box;
 }
 
 function createImageModal() {
@@ -17,16 +70,24 @@ function createImageModal() {
   const closeModal = document.getElementsByClassName('close')[0];
   const prevButton = document.querySelector('.prev');
   const nextButton = document.querySelector('.next');
-  const images = Array.from(imageLinks).map(link => link.getAttribute('data-image'));
+  const passwordPrompt = createPasswordPrompt();
+  const images = Array.from(imageLinks).map(link => ({
+    src: link.dataset.image,
+    password: link.dataset.password,
+    passwordLabel: link.dataset.passwordLabel,
+  }));
+  const unlockedImages = new Set();
 
   let currentIndex = -1;
+
+  modalImage.insertAdjacentElement('afterend', passwordPrompt.container);
 
   for (let i = 0; i < imageLinks.length; i++) {
     imageLinks[i].onclick = function() {
       const imageSrc = this.getAttribute('data-image');
-      modalImage.src = imageSrc;
-      currentIndex = images.indexOf(imageSrc);
+      currentIndex = images.findIndex(image => image.src === imageSrc);
       modal.style.display = 'block';
+      showCurrentImage();
     };
   }
 
@@ -43,22 +104,93 @@ function createImageModal() {
   prevButton.onclick = function() {
     if (currentIndex > 0) {
       currentIndex--;
-      modalImage.src = images[currentIndex];
     } else {
       currentIndex = images.length - 1;
-      modalImage.src = images[currentIndex];
     }
+    showCurrentImage();
   };
 
   nextButton.onclick = function() {
     if (currentIndex < images.length - 1) {
       currentIndex++;
-      modalImage.src = images[currentIndex];
     } else {
       currentIndex = 0;
-      modalImage.src = images[currentIndex];
     }
+    showCurrentImage();
   };
+
+  passwordPrompt.form.onsubmit = function(event) {
+    event.preventDefault();
+
+    const image = images[currentIndex];
+    if (!image) return;
+
+    if (passwordPrompt.input.value === image.password) {
+      unlockedImages.add(image.src);
+      showImage(image.src);
+      return;
+    }
+
+    passwordPrompt.error.textContent = 'Try again.';
+    passwordPrompt.input.value = '';
+    passwordPrompt.input.focus();
+  };
+
+  function showCurrentImage() {
+    const image = images[currentIndex];
+    if (!image) return;
+
+    if (image.password && !unlockedImages.has(image.src)) {
+      showPasswordPrompt(image);
+      return;
+    }
+
+    showImage(image.src);
+  }
+
+  function showImage(src) {
+    passwordPrompt.container.style.display = 'none';
+    modalImage.style.display = 'block';
+    modalImage.src = src;
+  }
+
+  function showPasswordPrompt(image) {
+    modalImage.removeAttribute('src');
+    modalImage.style.display = 'none';
+    passwordPrompt.label.textContent = image.passwordLabel;
+    passwordPrompt.input.value = '';
+    passwordPrompt.error.textContent = '';
+    passwordPrompt.container.style.display = 'flex';
+    passwordPrompt.input.focus();
+  }
+}
+
+function createPasswordPrompt() {
+  const container = document.createElement('div');
+  container.className = 'password-prompt';
+  container.style.display = 'none';
+
+  const form = document.createElement('form');
+
+  const label = document.createElement('label');
+  label.htmlFor = 'imagePassword';
+
+  const input = document.createElement('input');
+  input.id = 'imagePassword';
+  input.type = 'password';
+  input.autocomplete = 'off';
+
+  const submit = document.createElement('button');
+  submit.type = 'submit';
+  submit.textContent = 'Submit';
+
+  const error = document.createElement('p');
+  error.className = 'password-error';
+
+  form.append(label, input, submit, error);
+  container.appendChild(form);
+
+  return { container, error, form, input, label };
 }
 
 const countDownDate = new Date('April 15, 2023 07:30:00').getTime();
@@ -81,7 +213,13 @@ function updateCountdown() {
 }
 
 function parseCustomDate(dateStr) {
-  const [datePart, timePart, ampm] = dateStr.split(' ');
+  const match = dateStr.match(/^(\d{2}\/\d{2}\/\d{2})\s+(\d{1,2}:\d{2})\s+(am|pm)/i);
+
+  if (!match) {
+    return null;
+  }
+
+  const [, datePart, timePart, ampm] = match;
   const [month, day, year] = datePart.split('/').map(Number);
   let [hours, minutes] = timePart.split(':').map(Number);
 
@@ -92,19 +230,6 @@ function parseCustomDate(dateStr) {
   }
 
   return new Date(`20${year}`, month - 1, day, hours, minutes);
-}
-
-function sortDivs() {
-  const container = document.getElementById('textBoxes');
-  const boxes = Array.from(container.getElementsByClassName('text-box'));
-
-  boxes.sort((a, b) => {
-    const dateA = parseCustomDate(a.querySelector('b').textContent.trim());
-    const dateB = parseCustomDate(b.querySelector('b').textContent.trim());
-    return dateB - dateA;
-  });
-
-  boxes.forEach(box => container.appendChild(box));
 }
 
 function createHeartAnimation() {
@@ -182,12 +307,16 @@ function createHeartAnimation() {
 
 async function init() {
   document.getElementById('favicon').href = 'images/favicon.png';
-  await loadMessages();
-  sortDivs();
-  createImageModal();
   updateCountdown();
   setInterval(updateCountdown, 1000);
   createHeartAnimation();
+
+  try {
+    await loadMessages();
+    createImageModal();
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 init();
